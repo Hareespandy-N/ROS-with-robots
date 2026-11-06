@@ -9,6 +9,7 @@ import unittest
 class RosSmokeTests(unittest.TestCase):
     def test_simulation_topics_frames_and_clean_exit(self):
         import rclpy
+        from rclpy.node import NodeNameNonExistentError
         from nav_msgs.msg import Odometry, Path
         from geometry_msgs.msg import Twist
         from visualization_msgs.msg import MarkerArray
@@ -31,8 +32,14 @@ class RosSmokeTests(unittest.TestCase):
             while time.monotonic() < deadline and process.poll() is None:
                 rclpy.spin_once(observer, timeout_sec=0.1)
                 if len(received) == 4:
-                    published_topics.update(name for name, _ in
-                        observer.get_publisher_names_and_types_by_node('amr_lab_simulation', '/'))
+                    try:
+                        published_topics.update(name for name, _ in
+                            observer.get_publisher_names_and_types_by_node('amr_lab_simulation', '/'))
+                    except NodeNameNonExistentError:
+                        # Queued samples can outlive the bounded simulator's
+                        # graph entry. Keep earlier observations; exit and
+                        # message/topic assertions below must still pass.
+                        pass
             output, _ = process.communicate(timeout=3)
             self.assertEqual(process.returncode, 0, output)
             self.assertEqual(set(received), {'odom', 'planned_path', 'cmd_vel', 'obstacles'})
@@ -41,11 +48,15 @@ class RosSmokeTests(unittest.TestCase):
             self.assertEqual(received['planned_path'].header.frame_id, 'amr_lab/map')
             self.assertGreater(len(received['planned_path'].poses), 2)
             self.assertNotIn('/cmd_vel', published_topics)
-            self.assertIn('/amr_lab/sim/cmd_vel', published_topics)
+            self.assertTrue({'/amr_lab/sim/' + suffix for suffix in
+                             ('odom', 'planned_path', 'cmd_vel', 'obstacles')}
+                            .issubset(published_topics), published_topics)
         finally:
             if process.poll() is None:
                 process.terminate()
                 process.wait(timeout=5)
+            if process.stdout is not None:
+                process.stdout.close()
             observer.destroy_node()
             rclpy.shutdown()
 

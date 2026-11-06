@@ -50,3 +50,15 @@ completed. Publication review checked committed files for selected credential
 patterns/private addresses, bundled binary/media, broken relative links,
 invalid JSON/SVG, and benchmark limit violations; this is a bounded scan,
 not a guarantee of exhaustive legal or security clearance.
+
+## First Linux CI run
+
+[Run 42219520133](https://github.com/Hareespandy-N/ROS-with-robots/actions/runs/42219520133)
+passed the Python 3.10 and 3.12 jobs, and built the ROS Humble package with
+colcon. Its real ROS smoke test failed on a node-exit graph lookup race:
+queued messages remained after the bounded simulator's graph entry vanished.
+The test now handles that specific documented graph exception while retaining
+all message/frame/exit checks and requiring all four simulated publisher
+topics. The process output stream is also closed during cleanup.
+The failed CI run supplies the regression baseline; the next run, rather
+than this source edit, determines whether the ROS check passes.
