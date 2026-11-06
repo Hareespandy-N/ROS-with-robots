@@ -1,0 +1,39 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+Visualization Manager:
+  Class: ""
+  Global Options:
+    Fixed Frame: amr_lab/map
+    Background Color: 20; 29; 43
+  Displays:
+    - Class: rviz_default_plugins/Grid
+      Name: Grid
+      Enabled: true
+      Cell Size: 1
+    - Class: rviz_default_plugins/Path
+      Name: Planned path
+      Enabled: true
+      Topic:
+        Value: /amr_lab/sim/planned_path
+      Color: 97; 168; 255
+    - Class: rviz_default_plugins/Odometry
+      Name: Simulated robot
+      Enabled: true
+      Topic:
+        Value: /amr_lab/sim/odom
+    - Class: rviz_default_plugins/MarkerArray
+      Name: Simulated obstacles
+      Enabled: true
+      Topic:
+        Value: /amr_lab/sim/obstacles
+  Views:
+    Current:
+      Class: rviz_default_plugins/TopDownOrtho
+      Name: Current View
+      Scale: 65
+      X: 5
+      Y: 3.5
+Window Geometry:
+  Width: 1100
+  Height: 800

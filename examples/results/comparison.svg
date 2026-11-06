@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" role="img">
+<title>Original controller comparison: ideal simulation durations</title>
+<rect width="1000" height="560" fill="#0d1726"/>
+<g fill="#e5eef9" font-family="sans-serif">
+<text x="35" y="42" font-size="25">AMR Research Lab / controller comparison</text>
+<text x="35" y="72" font-size="14">Shared maps, goals, footprints, acceleration limits, and collision checks.</text>
+<text x="35" y="132" font-size="14">open_floor / baseline</text>
+<rect x="355" y="115" width="155.02" height="25" rx="4" fill="#61a8ff"/>
+<text x="845" y="133" font-size="14">20.45 s</text>
+<text x="35" y="192" font-size="14">open_floor / regulated</text>
+<rect x="355" y="175" width="154.65" height="25" rx="4" fill="#4bd8ad"/>
+<text x="845" y="193" font-size="14">20.40 s</text>
+<text x="35" y="252" font-size="14">warehouse / baseline</text>
+<rect x="355" y="235" width="231.97" height="25" rx="4" fill="#61a8ff"/>
+<text x="845" y="253" font-size="14">30.60 s</text>
+<text x="35" y="312" font-size="14">warehouse / regulated</text>
+<rect x="355" y="295" width="470.00" height="25" rx="4" fill="#4bd8ad"/>
+<text x="845" y="313" font-size="14">62.00 s</text>
+<text x="35" y="372" font-size="14">temporary_blockage / baseline</text>
+<rect x="355" y="355" width="142.90" height="25" rx="4" fill="#61a8ff"/>
+<text x="845" y="373" font-size="14">18.85 s</text>
+<text x="35" y="432" font-size="14">temporary_blockage / regulated</text>
+<rect x="355" y="415" width="143.27" height="25" rx="4" fill="#4bd8ad"/>
+<text x="845" y="433" font-size="14">18.90 s</text>
+<text x="35" y="520" font-size="13">Slower is not automatically worse: the regulated variant deliberately reduces speed near obstacles.</text>
+</g></svg>

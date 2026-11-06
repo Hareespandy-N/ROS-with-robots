@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 510" role="img" aria-labelledby="title desc">
+<title id="title">ROS with Robots: original AMR Research Lab architecture</title>
+<desc id="desc">Synthetic maps feed an A star planner, two path trackers, and an ideal differential-drive simulator. Original experiment reports and an optional ROS adapter expose results. There is no hardware driver.</desc>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#76a9dc" stroke-width="1.5"/></marker></defs>
+<rect width="1200" height="510" rx="22" fill="#0d1726"/>
+<g font-family="sans-serif" fill="#e5eef9">
+<text x="45" y="55" font-size="31" font-weight="bold">ROS with Robots</text>
+<text x="45" y="87" font-size="18" fill="#aabdd2">AMR Research Lab · original implementation · simulation first</text>
+<g stroke="#76a9dc" stroke-width="2" fill="none" marker-end="url(#arrow)">
+<path d="M235 213H280"/><path d="M470 213H515"/><path d="M750 213H795"/>
+<path d="M910 262V321H735"/><path d="M570 262V321H360"/>
+</g>
+<g stroke="#3f5d7c" stroke-width="1.5">
+<rect x="45" y="150" width="190" height="112" rx="13" fill="#17283a"/>
+<rect x="280" y="150" width="190" height="112" rx="13" fill="#17283a"/>
+<rect x="515" y="150" width="235" height="112" rx="13" fill="#173b3c"/>
+<rect x="795" y="150" width="355" height="112" rx="13" fill="#17283a"/>
+<rect x="45" y="321" width="315" height="100" rx="13" fill="#17283a"/>
+<rect x="735" y="321" width="415" height="100" rx="13" fill="#17283a"/>
+</g>
+<g font-size="20" font-weight="bold">
+<text x="67" y="187">Synthetic worlds</text><text x="304" y="187">A* planner</text>
+<text x="538" y="187">Two path trackers</text><text x="819" y="187">Differential-drive simulator</text>
+<text x="68" y="357">Original research outputs</text><text x="758" y="357">Optional ROS 2 Humble adapter</text>
+</g>
+<g font-size="14" fill="#aabdd2">
+<text x="67" y="216">Open floor / racks</text><text x="67" y="239">Scripted blockage</text>
+<text x="304" y="216">Footprint inflation</text><text x="304" y="239">Corner-cut checks</text>
+<text x="538" y="216">Fixed pure pursuit</text><text x="538" y="239">Clearance-regulated</text>
+<text x="819" y="216">Shared limits + collision projection</text><text x="819" y="239">Ground-truth metrics / failure states</text>
+<text x="68" y="385">SVG figures · CSV traces · JSON metrics</text>
+<text x="758" y="385">/amr_lab/sim/* · launch · RViz</text>
+</g>
+<text x="45" y="470" font-size="15" fill="#f4c568">Separate simulated docking state machine. No hardware driver, charger I/O, or physical accuracy claim.</text>
+</g></svg>

@@ -1,0 +1,38 @@
+{
+  "scenario": "temporary_blockage",
+  "controller": "baseline",
+  "status": "completed",
+  "measurement": "ideal_simulator_ground_truth",
+  "duration_s": 18.85,
+  "distance_m": 8.399453755680247,
+  "min_clearance_m": 0.02249999999999927,
+  "blocked_time_s": 2.6,
+  "max_speed_mps": 0.6,
+  "max_yaw_rate_radps": 0.0,
+  "max_acceleration_mps2": 0.5000000000000004,
+  "max_yaw_acceleration_radps2": 0.0,
+  "final_xy_error_m": 0.0005462443197519207,
+  "final_yaw_error_rad": 0.0,
+  "goal": {
+    "x": 9.2,
+    "y": 2,
+    "yaw": 0
+  },
+  "final_pose": {
+    "x": 9.199453755680247,
+    "y": 2.0,
+    "yaw": 0.0
+  },
+  "limits": {
+    "dt": 0.05,
+    "radius": 0.22,
+    "max_v": 0.6,
+    "max_w": 1.5,
+    "max_a": 0.5,
+    "max_alpha": 2.0,
+    "xy_tolerance": 0.04,
+    "yaw_tolerance": 0.04,
+    "timeout": 120.0
+  },
+  "steps": 377
+}

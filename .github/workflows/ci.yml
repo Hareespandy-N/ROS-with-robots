@@ -1,0 +1,41 @@
+name: Software and ROS simulation checks
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m unittest discover -s tests -v
+      - run: python -m compileall -q amr_research_lab tests launch
+      - run: python -m amr_research_lab benchmark --output /tmp/amr-lab-results
+  ros-humble:
+    runs-on: ubuntu-latest
+    container: ros:humble-ros-base-jammy
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install build and message packages
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends python3-colcon-common-extensions ros-humble-visualization-msgs
+      - name: Build and run real ROS topic smoke test
+        run: |
+          source /opt/ros/humble/setup.bash
+          colcon build --base-paths . --packages-select amr_research_lab
+          source install/setup.bash
+          export ROS_DOMAIN_ID=47
+          export ROS_LOCALHOST_ONLY=1
+          python3 -m unittest discover -s tests -v

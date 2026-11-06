@@ -1,0 +1,8 @@
+{
+  "status": "DOCKED",
+  "duration_s": 11.100000000000023,
+  "xy_error_m": 0.019675215874916323,
+  "yaw_error_rad": 0.004435813276431462,
+  "measurement": "ideal_simulator_ground_truth",
+  "hardware_charge_command_sent": false
+}
